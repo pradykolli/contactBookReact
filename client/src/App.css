@@ -3,6 +3,21 @@
    -4px -4px 8px 0 #ffb6b6;
    margin: 10px;
 }
+
+.card-subtitle, .navbar{
+  background: linear-gradient(0.9turn, #3f87a6, #ebf8e1, #f69d3c);
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px;
+}
+.card-title{
+  background: linear-gradient(0.2turn, #3f87a6, #ebf8e1, #f69d3c);
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px;
+}
 .App{
   padding:0 10px 70px 10px;
 }
