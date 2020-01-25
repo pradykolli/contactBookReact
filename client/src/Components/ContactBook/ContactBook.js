@@ -1,5 +1,10 @@
-import React,{useReducer, useEffect} from 'react'
+import React, { useReducer, useEffect } from 'react'
 import axios from 'axios'
+import AddContact from './AddContact'
+import {
+    Row, Col, Card, CardText, CardBody,
+    CardTitle, CardSubtitle
+} from 'reactstrap'
 
 // Type constants of actions 
 const FETCH_FAILURE = 'FETCH_FAILURE'
@@ -13,11 +18,11 @@ const initialState = {
     numberOfContacts: 0
 }
 // Reducer function from the 
-const reducer = (state,action) => {
-    switch(action.type){
+const reducer = (state, action) => {
+    switch (action.type) {
         case FETCH_SUCESS: return {
             loading: false,
-            error:'',
+            error: '',
             contacts: action.payload,
             numberOfContacts: action.payload.length
         }
@@ -31,19 +36,40 @@ const reducer = (state,action) => {
     }
 }
 function ContactBook() {
-    const [state,dispatch] = useReducer(reducer,initialState)
+    const [state, dispatch] = useReducer(reducer, initialState)
     useEffect(() => {
         axios.get('/api/contacts')
-             .then(res => { 
-                 console.log("fetched Results")
-                 dispatch({type: FETCH_SUCESS, payload: res.data})
-                })
-             .catch(err => dispatch({type: FETCH_FAILURE, payload: err}))
-    },[state.numberOfContacts])
+            .then(res => {
+                console.log("fetched Results")
+                dispatch({ type: FETCH_SUCESS, payload: res.data })
+            })
+            .catch(err => dispatch({ type: FETCH_FAILURE, payload: err }))
+    }, [state.numberOfContacts])
+
     return (
-        <div>
-            {state.contacts.map(contact => (<div key={contact._id}>{contact.firstName},{contact.lastName},{contact.phoneNumber},{contact.emailId}</div>))}
-        </div>
+        <>
+            <Row>
+                {
+                    state.contacts.map(
+                        contact => (
+                            <Col md="4" key={contact._id}>
+                                <Card>
+                                    <CardBody>
+                                        <CardTitle>{contact.firstName}</CardTitle>
+                                        <CardSubtitle>{contact.lastName}</CardSubtitle>
+                                    </CardBody>
+                                    <CardBody>
+                                        <CardText>{contact.phoneNumber}</CardText>
+                                        <CardText>{contact.emailId}</CardText>
+                                    </CardBody>
+                                </Card>
+                            </Col>
+                        )
+                    )
+                }
+            </Row>
+            <AddContact />
+        </>
     )
 }
 
