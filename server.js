@@ -8,7 +8,7 @@ app.use(bodyparser.json())
 
 const db = require('./config/keys').mongoURI
 
-mongoose.connect(db, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(db, {useNewUrlParser: true})
         .then(() => console.log("Mongo DB connected"))
         .catch(err => console.log("Could not connect to the DB" + err))
 
