@@ -7,7 +7,7 @@ const contacts = require('./routes/api/contacts')
 app.use(bodyparser.json())
 
 const db = require('./config/keys').mongoURI
-
+// connect mongo
 mongoose.connect(db, {useNewUrlParser: true})
         .then(() => console.log("Mongo DB connected"))
         .catch(err => console.log("Could not connect to the DB" + err))
