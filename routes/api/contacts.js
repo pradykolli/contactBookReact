@@ -7,14 +7,15 @@ const Contact = require('../../models/contact')
 // @desc   Get all contacts
 // @access Public
 router.get('/',(req,res) => {
-    Contact.find()
-            .sort({date: -1})
-            .then(
-                    contacts => {
-                        console.log("Getting Requests")
-                        res.json(contacts)
-                    }
-                )
+    // Contact.find()
+    //         .sort({date: -1})
+    //         .then(
+    //                 contacts => {
+    //                     console.log("Getting Requests")
+    //                     res.json(contacts)
+    //                 }
+    //             )
+    console.log("Hey atleast I am working")
 })
 
 // @route  POST api/contacts
