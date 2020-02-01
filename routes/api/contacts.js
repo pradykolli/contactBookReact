@@ -6,10 +6,15 @@ const Contact = require('../../models/contact')
 // @route  Get api/contacts
 // @desc   Get all contacts
 // @access Public
-router.get('/',(req,res) => {
-    Contact.find()
-            .sort({date: -1})
-            .then(contacts => res.json(contacts))
+router.get('/', async (req,res) => {
+    try{
+        const contatcs = await Contact.find().sort({date: -1})
+        res.json(contacts)
+    }
+    catch(err){
+        res.json(err)
+    }
+
 })
 
 // @route  POST api/contacts
