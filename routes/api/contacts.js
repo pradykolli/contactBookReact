@@ -8,7 +8,7 @@ const Contact = require('../../models/contact')
 // @access Public
 router.get('/', async (req,res) => {
     try{
-        const contatcs = await Contact.find()
+        const contatcs = await Contact.find().limit(5)
         // .sort({date: -1})
         res.json(contacts)
     }
