@@ -4,8 +4,10 @@ const bodyparser = require('body-parser')
 const app = express()
 const path = require('path')
 const contacts = require('./routes/api/contacts')
+const cors = require('cors')
+// Middlewares
 app.use(bodyparser.json())
-
+app.use(cors())
 const db = require('./config/keys').mongoURI
 // connect mongo
 mongoose.connect(db, {useNewUrlParser: true},{ useUnifiedTopology: true })
