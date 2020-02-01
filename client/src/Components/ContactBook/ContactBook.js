@@ -55,7 +55,11 @@ function ContactBook() {
                             <Col md="4" key={contact._id}>
                                 <Card>
                                     <CardBody>
-                                        <CardTitle>{contact.firstName}</CardTitle>
+                                        <CardTitle>
+                                            {contact.firstName}
+                                            <i className="fa fa-times-circle"></i> 
+                                            <i className="fa fa-pencil"></i> 
+                                        </CardTitle>
                                         <CardSubtitle>{contact.lastName}</CardSubtitle>
                                     </CardBody>
                                     <CardBody>

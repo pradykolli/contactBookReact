@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import ContactBook from './Components/ContactBook/ContactBook';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'font-awesome/css/font-awesome.css'
 import NavBar from './Components/ContactBook/NavBar';
 
 function App() {

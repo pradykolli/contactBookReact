@@ -7,15 +7,15 @@ const Contact = require('../../models/contact')
 // @desc   Get all contacts
 // @access Public
 router.get('/',(req,res) => {
-    // Contact.find()
-    //         .sort({date: -1})
-    //         .then(
-    //                 contacts => {
-    //                     console.log("Getting Requests")
-    //                     res.json(contacts)
-    //                 }
-    //             )
-    console.log("Hey atleast I am working")
+    Contact.find()
+            .sort({date: -1})
+            .then(
+                    contacts => {
+                        console.log("Getting Requests")
+                        res.json(contacts)
+                    }
+                )
+    // console.log("Hey atleast I am working")
 })
 
 // @route  POST api/contacts
@@ -62,4 +62,19 @@ router.delete('/:id',(req,res) => {
     .catch(err => res.status(404).json({success: false}))
 })
 
+// @route  UPDATE api/contacts/:id
+// @desc   UPDATE a contact
+// @access Public
+router.patch('/:id',async (req,res) => {
+   try{
+    const contact = await Contact.updateOne({_id: req.params.id},{$set:{
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        phoneNumber: req.body.phoneNumber,
+        emailId: req.body.emailId
+    }})
+   }catch(err){
+    res.json({message:err})
+   }
+})
 module.exports = router

@@ -18,6 +18,12 @@
   padding: 10px;
   border-radius: 5px;
 }
+.fa.fa-times-circle,
+.fa.fa-pencil{
+  float: right;
+  cursor: pointer;
+  margin-right: 5px;
+}
 .App{
   padding:0 10px 70px 10px;
 }
